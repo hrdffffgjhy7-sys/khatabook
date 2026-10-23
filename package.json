@@ -1,0 +1,41 @@
+{
+  "name": "imran-arain-hisab-kitab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Supplier credit, payments and outstanding account management for Imran Arain grocery shop.",
+  "type": "module",
+  "workspaces": [
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c green,cyan \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "node --watch server/index.js",
+    "dev:client": "npm run dev --workspace client",
+    "start": "node server/index.js",
+    "build": "npm run build --workspace client",
+    "seed:test": "node server/seed-test-data.js",
+    "db:init": "node server/init-db.js",
+    "check": "node --check server/index.js && npm run build"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.7.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
+    "pdfkit": "^0.15.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
