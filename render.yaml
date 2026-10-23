@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: hisab-kitab
+    runtime: node
+    plan: starter
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      - key: DATA_DIR
+        value: /data
+      - key: DATABASE_PATH
+        value: /data/hisab-kitab.sqlite
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: SERVE_CLIENT
+        value: "true"
+      - key: JWT_SECRET
+        generateValue: true
+    disk:
+      name: hisab-data
+      mountPath: /data
+      sizeGB: 1
